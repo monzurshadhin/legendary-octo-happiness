@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+}node;
+node *head=NULL;
+void insert()
+{
+    int n,i;
+    node *newnode=(node*)malloc(sizeof(node));
+    printf("Enter data:");
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    if(head==NULL)
+    {
+
+    head=newnode;
+    }
+    else
+    {
+       node *temp=head;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }
+        temp->next=newnode;
+    }
+
+}
+
+void display()
+{
+    node *newnode=head;
+    printf("THE list is:");
+    while(newnode->next!=NULL)
+    {
+        printf("%d->",newnode->data);
+        newnode=newnode->next;
+    }
+    printf("%d->null\n",newnode->data);
+
+}
+int main()
+{
+    char c;
+    do
+    {
+    insert();
+    display();
+    printf("do you want to insert another node?");
+    c=getche();
+    printf("\n");
+    }
+    while(c!='n');
+    getch();
+
+
+
+    return 0;
+}
